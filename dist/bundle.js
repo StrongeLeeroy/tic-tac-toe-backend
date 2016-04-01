@@ -157,16 +157,20 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'wrapper' },
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    this.state.message
-	                ),
 	                _react2.default.createElement(_Board2.default, { board: this.state.board, onCellClick: this.handleCellClick }),
 	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.restart },
-	                    'Restart'
+	                    'div',
+	                    { className: 'toolbar' },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { onClick: this.restart },
+	                        'Reset game'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        this.state.message
+	                    )
 	                )
 	            );
 	        }

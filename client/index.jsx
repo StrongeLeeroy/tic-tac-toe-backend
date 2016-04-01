@@ -79,9 +79,11 @@ class App extends React.Component {
     render() {
         return (
             <div className="wrapper">
-                <p>{ this.state.message }</p>
                 <Board board={this.state.board} onCellClick={this.handleCellClick}/>
-                <button onClick={this.restart}>Restart</button>
+                <div className="toolbar">
+                    <button onClick={this.restart}>Reset game</button>
+                    <p>{ this.state.message }</p>
+                </div>
             </div>
         );
     }

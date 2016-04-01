@@ -1,7 +1,22 @@
+$bg: #252525;
+$font-color: #fff;
+$cell-bg: #212121;
+$cell-hover-bg: #414141;
+$cell-border: #000;
+$cell-font-color: #969696;
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: Monsterrat, Helvetica, Arial, sans-serif;
+  color: $font-color;
+  background-color: $bg;
 }
 
 .wrapper {
@@ -13,27 +28,37 @@
   width: 300px;
   height: 300px;
 
-  margin: 10px auto;
+  margin: 20px auto;
   box-sizing: content-box;
 
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+  border-top: 1px solid $cell-border;
+  border-left: 1px solid $cell-border;
 }
 
 .cell {
   display: inline-block;
   vertical-align: top;
 
+  font-size: 2.5rem;
+  color: $cell-font-color;
+
   width: 100px;
   height: 100px;
 
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 1px solid $cell-border;
+  border-bottom: 1px solid $cell-border;
 
-  background-color: #dfdfdf;
+  background-color: $cell-bg;
 
   text-align: center;
   line-height: 100px;
+
+  cursor: pointer;
+  transition: background-color .1s ease-in;
+
+  &:hover {
+    background-color: $cell-hover-bg;
+  }
 }
 
 .piece-selection {
@@ -55,8 +80,18 @@
 }
 
 .toolbar button {
-  padding: 2px 5px;
+  background-color: $cell-bg;
+  border: 1px solid $cell-border;
+  padding: 10px;
+  width: 300px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $cell-hover-bg;
+  }
 }
+
+
 
 /* HELPER CLASSES */
 

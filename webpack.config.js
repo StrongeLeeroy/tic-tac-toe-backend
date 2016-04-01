@@ -37,5 +37,8 @@ module.exports = {
             { test: /\.(woff|woff2|ttf|eot)/, loader: "url-loader?limit=1" },
             { test: /\.json$/, loader: "json-loader"}
         ]
+    },
+    sassLoader: {
+        outputStyle: "compressed"
     }
 };
