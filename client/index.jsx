@@ -15,7 +15,8 @@ class App extends React.Component {
         this.state = {
             board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
             currentPlayer: 1,
-            gameState: 'Playing...'
+            message: 'Playing',
+            code: 0
         };
 
         this.restart = this.restart.bind(this);
@@ -29,12 +30,13 @@ class App extends React.Component {
         this.setState({
             board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
             currentPlayer: 1,
-            gameState: 'Playing...'
+            message: 'Playing',
+            code: 0
         });
     }
 
     handleCellClick(cell) {
-        if (this.state.board[cell] === 0 && this.state.gameState === 'Playing...') {
+        if (this.state.board[cell] === 0 && this.state.code === 0) {
             this.makeMove(cell);
             this.getAiMove();
         }
@@ -65,8 +67,11 @@ class App extends React.Component {
         var game = new Game(this.state.currentPlayer, this.state.board);
 
         if (game.over()) {
+            var newState = game.getGameState();
             this.setState({
-                gameState: game.getGameStateString()
+                message: newState.message,
+                code: newState.code
+
             });
         }
     }
@@ -74,7 +79,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="wrapper">
-                <p>{ this.state.gameState }</p>
+                <p>{ this.state.message }</p>
                 <Board board={this.state.board} onCellClick={this.handleCellClick}/>
                 <button onClick={this.restart}>Restart</button>
             </div>

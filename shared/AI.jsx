@@ -106,15 +106,15 @@ export class Game {
         this.boardArray = boardArray || [0, 0, 0, 0, 0, 0, 0, 0, 0];
     }
 
-    getGameStateString() {
+    getGameState() {
         if (this.win(1)) {
-            return 'X has won!';
+            return { message:'X has won!', code: 1 };
         } else if (this.win(2)) {
-            return 'O has won!';
+            return { message:'O has won!', code: 2 };
         } else if (this.tie()) {
-            return 'It\'s a tie!';
+            return { message:'It\'s a tie!', code: 3 };
         } else {
-            return 'Playing...';
+            return { message:'Playing', code: 0 };
         }
     }
 

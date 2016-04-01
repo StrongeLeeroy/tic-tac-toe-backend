@@ -85,7 +85,8 @@
 	        _this.state = {
 	            board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
 	            currentPlayer: 1,
-	            gameState: 'Playing...'
+	            message: 'Playing',
+	            code: 0
 	        };
 
 	        _this.restart = _this.restart.bind(_this);
@@ -102,13 +103,14 @@
 	            this.setState({
 	                board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
 	                currentPlayer: 1,
-	                gameState: 'Playing...'
+	                message: 'Playing',
+	                code: 0
 	            });
 	        }
 	    }, {
 	        key: 'handleCellClick',
 	        value: function handleCellClick(cell) {
-	            if (this.state.board[cell] === 0 && this.state.gameState === 'Playing...') {
+	            if (this.state.board[cell] === 0 && this.state.code === 0) {
 	                this.makeMove(cell);
 	                this.getAiMove();
 	            }
@@ -141,8 +143,11 @@
 	            var game = new _AI.Game(this.state.currentPlayer, this.state.board);
 
 	            if (game.over()) {
+	                var newState = game.getGameState();
 	                this.setState({
-	                    gameState: game.getGameStateString()
+	                    message: newState.message,
+	                    code: newState.code
+
 	                });
 	            }
 	        }
@@ -155,7 +160,7 @@
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    this.state.gameState
+	                    this.state.message
 	                ),
 	                _react2.default.createElement(_Board2.default, { board: this.state.board, onCellClick: this.handleCellClick }),
 	                _react2.default.createElement(
@@ -21558,16 +21563,16 @@
 	    }
 
 	    _createClass(Game, [{
-	        key: 'getGameStateString',
-	        value: function getGameStateString() {
+	        key: 'getGameState',
+	        value: function getGameState() {
 	            if (this.win(1)) {
-	                return 'X has won!';
+	                return { message: 'X has won!', code: 1 };
 	            } else if (this.win(2)) {
-	                return 'O has won!';
+	                return { message: 'O has won!', code: 2 };
 	            } else if (this.tie()) {
-	                return 'It\'s a tie!';
+	                return { message: 'It\'s a tie!', code: 3 };
 	            } else {
-	                return 'Playing...';
+	                return { message: 'Playing', code: 0 };
 	            }
 	        }
 	    }, {
