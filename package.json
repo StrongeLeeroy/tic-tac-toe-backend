@@ -2,7 +2,8 @@
   "name": "tic-tac-toe-backend",
   "version": "1.0.0",
   "description": "An express based Tic Tac Toe AI backend.",
-  "main": "server.js",
+  "main": "index.js",
+  "engine": "node >= 5.5.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
